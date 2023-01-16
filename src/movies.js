@@ -55,11 +55,8 @@ function dramaMoviesScore(moviesArray) {
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 function orderByYear(moviesArray) {
-    const moviesArrayDuplicate = moviesArray.slice();
-    const orderedByYearAndTitle = moviesArrayDuplicate.sort((a, b) => a.year - b.year || a.title.localeCompare(b.title))
-    return orderedByYearAndTitle;
+    return moviesArray.slice().sort((a, b) => a.year - b.year || a.title.localeCompare(b.title));
 }
-
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
 function orderAlphabetically(moviesArray) {
@@ -95,8 +92,6 @@ function turnHoursToMinutes(moviesArray) {
 
     return newArr;
 }
-
-turnHoursToMinutes(movie);
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
 function bestYearAvg(moviesArray) {
@@ -141,5 +136,3 @@ function bestYearAvg(moviesArray) {
 
     return `The best year was ${bestYear} with an average score of ${highScore}`;
 }
-
-bestYearAvg(movie);

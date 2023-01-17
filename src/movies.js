@@ -23,34 +23,24 @@ function howManyMovies(moviesArray) {
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
 function scoresAverage(moviesArray) {
-    if (moviesArray.length === 0) {
-        return 0;
-    }
-
     return parseFloat((moviesArray.reduce((sum, movie) => {
         if (typeof movie.score === "number") {
             return sum + movie.score;
         } else {
             return sum + 0;
         }
-    }, 0) / moviesArray.length).toFixed(2));
+    }, 0) / moviesArray.length).toFixed(2)) || 0;
 }
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
 function dramaMoviesScore(moviesArray) {
-    const dramaMovies = moviesArray.filter(currentElement => currentElement.genre.includes("Drama"));
-
-    if (dramaMovies.length === 0) {
-        return 0;
-    }
-
-    return parseFloat((dramaMovies.reduce((sum, movie) => {
+    return parseFloat((moviesArray.filter(movie => movie.genre.includes("Drama")).reduce((sum, movie) => {
         if (typeof movie.score === "number") {
-            return sum + movie.score;
+            return sum += movie.score;
         } else {
-            return sum + 0;
+            return sum += 0;
         }
-    }, 0) / dramaMovies.length).toFixed(2));
+    }, 0) / moviesArray.filter(movie => movie.genre.includes("Drama")).length).toFixed(2)) || 0;
 }
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
